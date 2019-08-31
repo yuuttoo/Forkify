@@ -7,7 +7,7 @@ import { elements, renderLoader, clearLoader } from './views/base';
 
 /** Global state of the APP
  *  -Search Object
- *  -Current recipe object
+ *  -Current  recipe object
  *  -Shopping List object
  *  -Liked recipes
  */
@@ -75,9 +75,12 @@ const controlRecipe = async () => {
         // Prepare UI for changes
         recipeView.clearRecipe();
         renderLoader(elements.recipe);
+
+        // Highlight selected search item
+        if(state.search) searchView.highlightSelected(id);
+
         //Create new recipe object
         state.recipe = new Recipe(id);
-
 
      try {
         //Get recipe data and parse ingredients
